@@ -21,6 +21,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '3.1.13'
 gem 'bootstrap-sass', '3.4.1'
 
+#test
+gem 'rails-controller-testing'
+
 # Chartkick
 
 gem 'chartkick'
