@@ -39,6 +39,14 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   end
 
+  test "should get market" do
+    get market_path
+    assert_response :success
+    assert_select "title", "Ruby on Rails Tutorial Sample App | Market"
+
+  end
+
+
  # test "should get singup" do
     #get static_pages_singup_url
    # assert_response :success

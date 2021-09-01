@@ -43,7 +43,6 @@ class Stock < ApplicationRecord
         
         def update_data
             todays_date = Time.now.strftime("%Y-%m-%d")
-            
             result = Net::HTTP.get(URI.parse('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&outputsize=compact&apikey=S1DX8G3G38PEA0Rd')) 
             json = JSON.parse(result).to_hash
             data = json["Time Series (Daily)"]
