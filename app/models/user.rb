@@ -8,5 +8,11 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
     
-    
+    #Every time a new user is created give 10000 funds
+    after_initialize do
+        if self.new_record?
+        self.funds = 10000
+        end
+    end
 end
+
