@@ -12,6 +12,9 @@ class User < ApplicationRecord
     after_initialize do
         if self.new_record?
         self.funds = 10000
+        self.ibm = 0
+        self.amazon = 0
+        self.apple = 0
         end
     end
     
