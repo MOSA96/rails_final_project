@@ -1,11 +1,19 @@
 <% provide(:title, 'Market') %>
 <h1>Stocks</h1>
 
+<%= line_chart [
+ {name: "IBM", data: @stocks.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},
+             ], points: false %>
+
 
 <%= line_chart [
- {name: "IBM", data: @stocks.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},], points: false %> 
- 
- <%= line_chart [
- {name: "Amazon", data: @stocks.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},], points: false %> 
+ {name: "Amazon", data: @amazons.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},
+             ], points: false %>
+
+
+<%= line_chart [
+ {name: "Apple", data: @apples.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},
+             ], points: false %>
+
 
  

@@ -14,6 +14,9 @@ class StaticPagesController < ApplicationController
   
   def market
     @stocks = Stock.all
+    @amazons = Amazon.all
+    @apples = Apple.all
+    
     respond_to do |format|
       format.html
     end
