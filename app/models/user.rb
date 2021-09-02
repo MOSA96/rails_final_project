@@ -14,5 +14,14 @@ class User < ApplicationRecord
         self.funds = 10000
         end
     end
+    
+    def User.digest(string)
+        cost = ActiveModel::SecurePassword.min_cost ?
+        BCrypt::Engine::MIN_COST :
+        BCrypt::Engine.cost
+        BCrypt::Password.create(string, cost: cost)
+    end
+    
+    
 end
 
