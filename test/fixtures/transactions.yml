@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ibm: 1.5
+  amazon: 1.5
+  apple: 1.5
+  sender: MyString
+  receiver: MyString
+
+two:
+  ibm: 1.5
+  amazon: 1.5
+  apple: 1.5
+  sender: MyString
+  receiver: MyString

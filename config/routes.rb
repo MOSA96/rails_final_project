@@ -13,10 +13,13 @@ Rails.application.routes.draw do
   get '/market', to: 'static_pages#market'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
-  get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  #post 'market', to: 'transaction#buy_amzn'
+  post 'market', to: "transaction#buy_amzn", as: :buy_amzn
+  post 'market', to: "transaction#sell_amzn", as: :sell_amzn
   delete '/logout', to: 'sessions#destroy'
   resources :users
+  resources :transactions
   resources :account_activations, only: [:edit]
 
   
