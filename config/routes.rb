@@ -14,9 +14,12 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  #post 'market', to: 'transaction#buy_amzn'
-  post 'market', to: "transaction#buy_amzn", as: :buy_amzn
-  post 'market', to: "transaction#sell_amzn", as: :sell_amzn
+  post '/buy_amzn', to: "transaction#buy_amzn", as: :buy_amzn
+  post '/sell_amzn', to: "transaction#sell_amzn", as: :sell_amzn
+  post '/buy_ibm', to: "transaction#buy_ibm", as: :buy_ibm
+  post '/sell_ibm', to: "transaction#sell_ibm", as: :sell_ibm
+  post '/buy_apple', to: "transaction#buy_apple", as: :buy_apple
+  post '/sell_apple', to: "transaction#sell_apple", as: :sell_apple
   delete '/logout', to: 'sessions#destroy'
   resources :users
   resources :transactions

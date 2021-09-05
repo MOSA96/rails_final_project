@@ -10,7 +10,7 @@
         <div style="width: 100%; display: table;">
         <div style="display: table-row; height: 100px;">
             <div style="width: 50%; display: table-cell">
-                <%= form_tag buy_amzn_path do |form| %>
+                <%= form_tag buy_ibm_path do |form| %>
                       <%= label_tag :email %><br>
                       <%= text_field_tag  :email %>
                       <%= label_tag  :amount %><br>
@@ -21,7 +21,7 @@
             
             
             <div style="display: table-cell"> 
-                <%= form_tag sell_amzn_path do |form| %>
+                <%= form_tag sell_ibm_path do |form| %>
                       <%= label_tag :email %><br>
                       <%= text_field_tag  :email %>
                       <%= label_tag  :amount %><br>
@@ -38,7 +38,7 @@
     <div>
     <%= line_chart [
  {name: "Amazon", data: @amazons.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},
-             ], points: false, colors: ["#0000FF", "#666"], width: "1100px", height: "500px" %>
+             ], points: false, colors: ["#020DF9", "#666"], width: "1100px", height: "500px" %>
             
         <% if logged_in? %>   
         <div style="width: 100%; display: table;">
@@ -67,18 +67,20 @@
         </div>
         <% end %>
     </div>
-
-
+    
+    
+    
+    
     <div>
     <%= line_chart [
  {name: "Apple", data: @apples.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},
-             ], points: false, colors: ["#008080", "#666"], width: "1100px", height: "500px" %>
+             ], points: false, colors: ["#14F902", "#666"], width: "1100px", height: "500px" %>
             
         <% if logged_in? %>   
         <div style="width: 100%; display: table;">
         <div style="display: table-row; height: 100px;">
             <div style="width: 50%; display: table-cell">
-                <%= form_tag buy_amzn_path do |form| %>
+                <%= form_tag buy_apple_path do |form| %>
                       <%= label_tag :email %><br>
                       <%= text_field_tag  :email %>
                       <%= label_tag  :amount %><br>
@@ -89,7 +91,7 @@
             
             
             <div style="display: table-cell"> 
-                <%= form_tag sell_amzn_path do |form| %>
+                <%= form_tag sell_apple_path do |form| %>
                       <%= label_tag :email %><br>
                       <%= text_field_tag  :email %>
                       <%= label_tag  :amount %><br>
@@ -101,6 +103,9 @@
         </div>
         <% end %>
     </div>
+    
+    
 
+    
 
     

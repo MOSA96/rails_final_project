@@ -5,7 +5,7 @@ class Transaction < ApplicationRecord
         
         yesterday_date =  Date.yesterday.yesterday.strftime("%Y-%m-%d")
         $master_account = "master@master.com" 
-        $stock_price =  Stock.find_by(date: yesterday_date).close
+        $ibm_price =  Stock.find_by(date: yesterday_date).close
         $amazon_price =  Amazon.find_by(date: yesterday_date).close
         $apple_price =  Apple.find_by(date: yesterday_date).close
         
@@ -44,30 +44,74 @@ class Transaction < ApplicationRecord
             end
         end
         
-        #def buy(receiver_mail, market, amount)
-            #ActiveRecord::Base.transaction do
-                #retire($master_account, amount)
-                #receive(receiver_mail, amount)
-            #end
-        #end
+        def buy_appl(buyer_mail, amount)
+            ActiveRecord::Base.transaction do
+                total_price = amount * $apple_price
+                
+                master_apple = User.find_by(email: $master_account).apple
+                master_funds = User.find_by(email: $master_account).funds
+                User.find_by(email: $master_account).update_attribute(:apple, master_apple - amount )
+                User.find_by(email: $master_account).update_attribute(:funds, master_funds + total_price )
+                
+                user_apple =  User.find_by(email: buyer_mail).apple
+                user_funds = User.find_by(email: buyer_mail).funds
+                User.find_by(email: buyer_mail).update_attribute(:funds, user_funds - total_price )
+                User.find_by(email: buyer_mail).update_attribute(:apple, user_apple  + amount )
+            end
+        end
         
-        #def retire(sender_mail, market, amount)
-            #savings = market.find_by(email: sender_mail).saving
-            #market.find_by(email: sender_mail).update(saving:(savings-amount))
-        #end
-    
-        #def receive(receiver_mail, market, amount)
-            #savings = market.find_by(email: receiver_mail).saving
-            #market.find_by(email: receiver_mail).update(saving:(savings+amount))
-        #end
-    
-    
-        #def transfer(sender_mail, receiver_mail, amount)
-            #ActiveRecord::Base.transaction do
-                #retire(sender_mail, amount)
-                #receive(receiver_mail, amount)
-            #end
-        #end
+        
+        def sell_appl(seller_mail, amount)
+            ActiveRecord::Base.transaction do
+                total_price = amount * $apple_price
+                
+                master_apple = User.find_by(email: $master_account).apple
+                master_funds = User.find_by(email: $master_account).funds
+                User.find_by(email: $master_account).update_attribute(:apple, master_apple + amount )
+                User.find_by(email: $master_account).update_attribute(:funds, master_funds - total_price )
+                
+                user_apple =  User.find_by(email: seller_mail).apple
+                user_funds = User.find_by(email: seller_mail).funds
+                User.find_by(email: seller_mail).update_attribute(:funds, user_funds + total_price )
+                User.find_by(email: seller_mail).update_attribute(:apple, user_apple - amount )
+            end
+        end
+        
+        
+        def buy_ibm(buyer_mail, amount)
+            ActiveRecord::Base.transaction do
+                total_price = amount * $ibm_price
+                
+                master_ibm = User.find_by(email: $master_account).ibm
+                master_funds = User.find_by(email: $master_account).funds
+                User.find_by(email: $master_account).update_attribute(:ibm, master_ibm - amount )
+                User.find_by(email: $master_account).update_attribute(:funds, master_funds + total_price )
+                
+                user_ibm =  User.find_by(email: buyer_mail).ibm
+                user_funds = User.find_by(email: buyer_mail).funds
+                User.find_by(email: buyer_mail).update_attribute(:funds, user_funds - total_price )
+                User.find_by(email: buyer_mail).update_attribute(:ibm, user_ibm  + amount )
+            end
+        end
+        
+        
+        def sell_ibm(seller_mail, amount)
+            ActiveRecord::Base.transaction do
+                total_price = amount * $ibm_price
+                
+                master_ibm = User.find_by(email: $master_account).ibm
+                master_funds = User.find_by(email: $master_account).funds
+                User.find_by(email: $master_account).update_attribute(:apple, master_ibm + amount )
+                User.find_by(email: $master_account).update_attribute(:funds, master_funds - total_price )
+                
+                user_ibm =  User.find_by(email: seller_mail).ibm
+                user_funds = User.find_by(email: seller_mail).funds
+                User.find_by(email: seller_mail).update_attribute(:funds, user_funds + total_price )
+                User.find_by(email: seller_mail).update_attribute(:apple, user_ibm - amount )
+            end
+        end
+        
+        
     end
     
     
