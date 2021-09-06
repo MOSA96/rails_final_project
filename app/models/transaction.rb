@@ -1,9 +1,9 @@
 class Transaction < ApplicationRecord
-    has_many :users 
+    has_one :user
     
     class << self
         
-        yesterday_date =  Date.yesterday.yesterday.strftime("%Y-%m-%d")
+        yesterday_date =  Date.yesterday.yesterday.yesterday.strftime("%Y-%m-%d")
         $master_account = "master@master.com" 
         $ibm_price =  Stock.find_by(date: yesterday_date).close
         $amazon_price =  Amazon.find_by(date: yesterday_date).close
@@ -101,13 +101,13 @@ class Transaction < ApplicationRecord
                 
                 master_ibm = User.find_by(email: $master_account).ibm
                 master_funds = User.find_by(email: $master_account).funds
-                User.find_by(email: $master_account).update_attribute(:apple, master_ibm + amount )
+                User.find_by(email: $master_account).update_attribute(:ibm, master_ibm + amount )
                 User.find_by(email: $master_account).update_attribute(:funds, master_funds - total_price )
                 
                 user_ibm =  User.find_by(email: seller_mail).ibm
                 user_funds = User.find_by(email: seller_mail).funds
                 User.find_by(email: seller_mail).update_attribute(:funds, user_funds + total_price )
-                User.find_by(email: seller_mail).update_attribute(:apple, user_ibm - amount )
+                User.find_by(email: seller_mail).update_attribute(:ibm, user_ibm - amount )
             end
         end
         

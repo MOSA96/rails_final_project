@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :transactions
+    
     before_save { email.downcase!}
     validates :name, presence: true, length: { maximum: 50 }
     #validates :email, presence: true, length: { maximum: 255 }
@@ -25,6 +27,6 @@ class User < ApplicationRecord
         BCrypt::Password.create(string, cost: cost)
     end
     
-    
+
 end
 

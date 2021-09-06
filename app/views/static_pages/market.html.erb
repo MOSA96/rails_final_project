@@ -12,9 +12,9 @@
             <div style="width: 50%; display: table-cell">
                 <%= form_tag buy_ibm_path do |form| %>
                       <%= label_tag :email %><br>
-                      <%= text_field_tag  :email %>
+                      <%= text_field_tag  :email, nil, :required => true %>
                       <%= label_tag  :amount %><br>
-                      <%= text_field_tag :amount %>
+                      <%= text_field_tag :amount, nil, :required => true %>
                       <%= submit_tag "Buy" %>
                 <% end %> 
             </div>
@@ -23,9 +23,9 @@
             <div style="display: table-cell"> 
                 <%= form_tag sell_ibm_path do |form| %>
                       <%= label_tag :email %><br>
-                      <%= text_field_tag  :email %>
+                      <%= text_field_tag  :email, nil, :required => true %>
                       <%= label_tag  :amount %><br>
-                      <%= text_field_tag :amount %>
+                      <%= text_field_tag :amount, nil, :required => true %>
                       <%= submit_tag "Sell" %>
                 <% end %> 
             </div>
@@ -46,9 +46,9 @@
             <div style="width: 50%; display: table-cell">
                 <%= form_tag buy_amzn_path do |form| %>
                       <%= label_tag :email %><br>
-                      <%= text_field_tag  :email %>
+                      <%= text_field_tag  :email, nil, :required => true %>
                       <%= label_tag  :amount %><br>
-                      <%= text_field_tag :amount %>
+                      <%= text_field_tag :amount, nil, :required => true %>
                       <%= submit_tag "Buy" %>
                 <% end %> 
             </div>
@@ -57,9 +57,9 @@
             <div style="display: table-cell"> 
                 <%= form_tag sell_amzn_path do |form| %>
                       <%= label_tag :email %><br>
-                      <%= text_field_tag  :email %>
+                      <%= text_field_tag  :email, nil, :required => true %>
                       <%= label_tag  :amount %><br>
-                      <%= text_field_tag :amount %>
+                      <%= text_field_tag :amount, nil, :required => true %>
                       <%= submit_tag "Sell" %>
                 <% end %> 
             </div>
@@ -82,9 +82,9 @@
             <div style="width: 50%; display: table-cell">
                 <%= form_tag buy_apple_path do |form| %>
                       <%= label_tag :email %><br>
-                      <%= text_field_tag  :email %>
+                      <%= text_field_tag  :email, nil, :required => true %>
                       <%= label_tag  :amount %><br>
-                      <%= text_field_tag :amount %>
+                      <%= text_field_tag :amount, nil, :required => true %>
                       <%= submit_tag "Buy" %>
                 <% end %> 
             </div>
@@ -93,9 +93,9 @@
             <div style="display: table-cell"> 
                 <%= form_tag sell_apple_path do |form| %>
                       <%= label_tag :email %><br>
-                      <%= text_field_tag  :email %>
+                      <%= text_field_tag  :email, nil, :required => true %>
                       <%= label_tag  :amount %><br>
-                      <%= text_field_tag :amount %>
+                      <%= text_field_tag :amount, nil, :required => true %>
                       <%= submit_tag "Sell" %>
                 <% end %> 
             </div>

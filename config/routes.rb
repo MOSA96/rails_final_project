@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   post '/buy_apple', to: "transaction#buy_apple", as: :buy_apple
   post '/sell_apple', to: "transaction#sell_apple", as: :sell_apple
   delete '/logout', to: 'sessions#destroy'
+  
+  shallow do 
+    resources :users
+      resources :transactions
+  end
+  
   resources :users
   resources :transactions
   resources :account_activations, only: [:edit]

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   def show 
     @user = User.find(params[:id])
+    #@transaction = @user.transactions.find_by(email: @user.email)
   end
   
   def new
