@@ -1,5 +1,6 @@
 class TransactionController < ApplicationController
     
+    
 
     def buy_amzn
         Transaction.create(receiver: params[:email], amazon: params[:amount], buy: true, sell: false) 

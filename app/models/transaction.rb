@@ -3,17 +3,14 @@ class Transaction < ApplicationRecord
     
     class << self
         
-        yesterday_date =  Date.yesterday.yesterday.yesterday.strftime("%Y-%m-%d")
+        $yesterday_date =  Date.yesterday.yesterday.yesterday.yesterday.yesterday.strftime("%Y-%m-%d")
         $master_account = "master@master.com" 
-        $ibm_price =  Stock.find_by(date: yesterday_date).close
-        $amazon_price =  Amazon.find_by(date: yesterday_date).close
-        $apple_price =  Apple.find_by(date: yesterday_date).close
         
-        
-        
+
         def buy_amzn(buyer_mail, amount)
             ActiveRecord::Base.transaction do
-                total_price = amount * $amazon_price
+                amazon_price =  Amazon.find_by(date: $yesterday_date).close
+                total_price = amount * amazon_price
                 
                 master_amzn = User.find_by(email: $master_account).amazon
                 master_funds = User.find_by(email: $master_account).funds
@@ -30,6 +27,7 @@ class Transaction < ApplicationRecord
         
         def sell_amzn(seller_mail, amount)
             ActiveRecord::Base.transaction do
+                amazon_price =  Amazon.find_by(date: $yesterday_date).close
                 total_price = amount * $amazon_price
                 
                 master_amzn = User.find_by(email: $master_account).amazon
@@ -46,7 +44,8 @@ class Transaction < ApplicationRecord
         
         def buy_appl(buyer_mail, amount)
             ActiveRecord::Base.transaction do
-                total_price = amount * $apple_price
+                apple_price =  Apple.find_by(date: $yesterday_date).close
+                total_price = amount * apple_price
                 
                 master_apple = User.find_by(email: $master_account).apple
                 master_funds = User.find_by(email: $master_account).funds
@@ -63,7 +62,8 @@ class Transaction < ApplicationRecord
         
         def sell_appl(seller_mail, amount)
             ActiveRecord::Base.transaction do
-                total_price = amount * $apple_price
+                apple_price =  Apple.find_by(date: $yesterday_date).close
+                total_price = amount * apple_price
                 
                 master_apple = User.find_by(email: $master_account).apple
                 master_funds = User.find_by(email: $master_account).funds
@@ -80,7 +80,8 @@ class Transaction < ApplicationRecord
         
         def buy_ibm(buyer_mail, amount)
             ActiveRecord::Base.transaction do
-                total_price = amount * $ibm_price
+                ibm_price =  Stock.find_by(date: $yesterday_date).close
+                total_price = amount * ibm_price
                 
                 master_ibm = User.find_by(email: $master_account).ibm
                 master_funds = User.find_by(email: $master_account).funds
@@ -97,7 +98,8 @@ class Transaction < ApplicationRecord
         
         def sell_ibm(seller_mail, amount)
             ActiveRecord::Base.transaction do
-                total_price = amount * $ibm_price
+                ibm_price =  Stock.find_by(date: $yesterday_date).close
+                total_price = amount * ibm_price
                 
                 master_ibm = User.find_by(email: $master_account).ibm
                 master_funds = User.find_by(email: $master_account).funds
