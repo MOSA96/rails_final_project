@@ -1,7 +1,7 @@
-class StocksController < ApplicationController
+class IbmsController < ApplicationController
   
   def index
-    @stocks = Stock.all
+    @ibms = Ibm.all
     
     respond_to do |format|
       format.html

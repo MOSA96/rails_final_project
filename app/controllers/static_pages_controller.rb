@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
   end
   
   def market
-    @stocks = Stock.all
+    @ibms = Ibm.all
     @amazons = Amazon.all
     @apples = Apple.all
     

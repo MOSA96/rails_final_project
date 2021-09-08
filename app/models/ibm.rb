@@ -1,9 +1,9 @@
-class Stock < ApplicationRecord
+class Ibm < ApplicationRecord
     include Markets
     #Stock.delete_all
     class << self
         
-        $model_market = Stock
+        $model_market = Ibm
         
         def download
             #model_market = Stock
