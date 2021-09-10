@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.7'
 #Passwords
 gem 'bcrypt', '3.1.13'
 gem 'bootstrap-sass', '3.4.1'
+#Jobs
+gem 'sidekiq'
+
 
 #test
 gem 'rails-controller-testing'
