@@ -13,18 +13,22 @@
         table {
           font-family: arial, sans-serif;
           border-collapse: collapse;
-          width: 100%;
+          width: 200%;
         }
         
         td, th {
           border: 1px solid #dddddd;
-          text-align: left;
+          text-align: center;
           padding: 8px;
         }
         
         tr:nth-child(even) {
           background-color: #dddddd;
         }
+        h2 {
+            text-align: right;
+          }
+        
         </style>
     </head>
     
@@ -50,7 +54,41 @@
         </table>
 
     </body>
+    
+    <body>
+
+        <h2>Transacciones</h2>
+          <table class="center">
+            <tr>
+              <th>Fecha</th>
+              <th>Transacción</th>
+              <th>Mercado</th>
+              <th>Cantidad</th>
+            </tr>
+            <% @user.transactions.all.each do |s| %>
+            <tr>
+                <td><%= s.created_at %></td>
+                <td>
+                    <% if s.buy == true %>
+                      Compra
+                    <% else %>
+                      Venta
+                    <% end %>
+              </td>
+                <td><%= s.market %></td>
+                <td><%= s.amount %></td>
+            </tr>
+            <% end %>
+          
+        </table>
+
+    </body>
+    
+    
     </aside>
+    
+   
+</table>
     
     
     

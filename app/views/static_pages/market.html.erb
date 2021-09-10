@@ -1,10 +1,6 @@
 <% provide(:title, 'Market') %>
 <h1>Stocks</h1>
 
-
-
-
-
    <div>
     <%= line_chart [
  {name: "IBM", data: @ibms.all.inject({}) {|res, v| res[v[:date]] = v.close; res }},
@@ -19,9 +15,6 @@
              ], points: false, colors: ["#020DF9", "#666"], width: "1100px", height: "500px" %>
             
     </div>
-    
-    
-    
     
     <div>
     <%= line_chart [
@@ -49,7 +42,8 @@
             
             <div style="display: table-cell"> 
                 <%= form_tag sell_path do |form| %>
-                      <%= hidden_field_tag  :email, nil, :required => true, value:current_user.email %>
+                      <%= hidden_field_tag  :email, nil, :required => true, value: current_user.email %>
+                      <%= hidden_field_tag  :id, nil, :required => true, value: current_user.id %>
                       <label for="markets">Choose a market:</label>
                       <select id="markets" name="markets">
                       <option value="ibm">IBM</option>

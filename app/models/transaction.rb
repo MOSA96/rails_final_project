@@ -1,9 +1,10 @@
 class Transaction < ApplicationRecord
-    has_one :user
-    
+    belongs_to :user
+    default_scope -> { order(created_at: :desc) }
+
     class << self
         
-        $yesterday_date =  Date.yesterday.yesterday.yesterday.yesterday.yesterday.strftime("%Y-%m-%d")
+        $yesterday_date =  Date.yesterday.yesterday.strftime("%Y-%m-%d")
         $master_account = "master@master.com" 
         
         
